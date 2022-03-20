@@ -9,6 +9,30 @@ class LibraryController extends Controller
 {
     // Move to service and repository later on
 
+    public function index(Request $request)
+    {
+        try {
+            $data = Term::all();
+
+            $result = [
+                'status'    => 200,
+                'message'   => 'Success',
+                'data'      => $data
+            ];
+
+            return response()->json($result, 200);
+
+        } catch (\Throwable $th) {
+           
+            $result = [
+                'status'    => 500,
+                'message'   => 'Failed'
+            ];
+
+            return response()->json($result, 500);
+        }
+    }
+
     public function store(Request $request)
     {
         $payload = $request->all();
