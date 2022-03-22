@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('library', [LibraryController::class, 'index']);
+Route::post('library/translate', [LibraryController::class, 'translate']);
 Route::post('library/store', [LibraryController::class, 'store']);
