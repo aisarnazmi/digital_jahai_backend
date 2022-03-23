@@ -40,13 +40,13 @@ class LibraryController extends Controller
 
         $result = Term::query()
             ->select(['id', 'jahai_term', 'malay_term', 'english_term', 'description', 'term_category'])
-            ->when($language == 'Jahai', function ($q) use ($search) {
+            ->when($language == 'jahai', function ($q) use ($search) {
                 $q->where("jahai_term", "LIKE", "%{$search}%");
             })
-            ->when($language == 'Malay', function ($q) use ($search) {
+            ->when($language == 'malay', function ($q) use ($search) {
                 $q->where("malay_term", "LIKE", "%{$search}%");
             })
-            ->when($language == 'English', function ($q) use ($search) {
+            ->when($language == 'english', function ($q) use ($search) {
                 $q->where("english_term", "LIKE", "%{$search}%");
             })
             ->get();
