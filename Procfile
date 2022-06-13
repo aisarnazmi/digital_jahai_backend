@@ -1,0 +1,1 @@
+web: vendor/bin/digital_jahai_backend/public
