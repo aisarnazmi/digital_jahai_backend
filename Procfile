@@ -1,1 +1,1 @@
-web: digital_jahai_backend/public
+web: heroku-php-apache2 public/
