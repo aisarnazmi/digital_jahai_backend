@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
 
-$DATABASE_URL = parse_url(env('DATABASE_URL', ''));
+$DATABASE_URL = new Fluent(parse_url(env('DATABASE_URL', '')));
 
 return [
 
@@ -82,11 +83,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => $DATABASE_URL["host"],
-            'port' => $DATABASE_URL["port"],
-            'database' => ltrim($DATABASE_URL["path"], "/"),
-            'username' => $DATABASE_URL["user"],
-            'password' => $DATABASE_URL["pass"],
+            'host' => $DATABASE_URL->get('host', '127.0.0.1'),
+            'port' => $DATABASE_URL->get('port', '5432'),
+            'database' => ltrim($DATABASE_URL->get('path', 'forge'), "/"),
+            'username' => $DATABASE_URL->get('user', 'forge'),
+            'password' => $DATABASE_URL->get('pass', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
