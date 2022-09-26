@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/artisan', function (Request $request) {
+    return view('artisan');
+});
+
+Route::post('/artisan-run', function (Request $request) {
+    Artisan::call($request->input('command'));
+
+    return redirect()->back()->with('success', 'your message here');
+
 });

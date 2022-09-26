@@ -15,13 +15,13 @@ class CreateTermsTable extends Migration
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
-            $table->string('jahai_term', 255)->nullable();
-            $table->string('malay_term', 255)->nullable();
-            $table->string('english_term', 255)->nullable();
+            $table->string('jahai_term')->nullable();
+            $table->string('malay_term')->nullable();
+            $table->string('english_term')->nullable();
             $table->longText('description')->nullable();
             $table->longText('malay_description')->nullable();
             $table->longText('english_description')->nullable();
-            $table->string('term_category', 255)->nullable();
+            $table->string('term_category')->nullable();
         });
     }
 
