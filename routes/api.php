@@ -27,5 +27,6 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('library/translate', [LibraryController::class, 'translate']);
 Route::apiResource('library', LibraryController::class)->only(['index', 'store']);
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::apiResource('library', LibraryController::class)->only(['update', 'destroy']);
+    Route::post('library/update', [LibraryController::class, 'update']);
+    Route::get('library/delete', [LibraryController::class, 'destroy']);
 });

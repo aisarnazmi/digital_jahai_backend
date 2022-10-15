@@ -65,12 +65,12 @@ class LibraryController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $payload = $request->all();
 
         try {
-            $term = Term::find($id);
+            $term = Term::find($payload['id']);
 
             $term->update($payload);
 
@@ -86,13 +86,14 @@ class LibraryController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $payload = $request->all();
+        
         try {
-            $term = Term::find($id)->delete();
+            $term = Term::find($payload['id'])->delete();
 
             if ($term) {
-
                 return response()->json($term, 200);
             } else {
 
