@@ -26,6 +26,5 @@ Route::get('/artisan', function (Request $request) {
 Route::post('/artisan-run', function (Request $request) {
     Artisan::call($request->input('command'));
 
-    return redirect()->back()->with('success', 'your message here');
-
+    return redirect()->back()->with('success', Artisan::output());
 });
