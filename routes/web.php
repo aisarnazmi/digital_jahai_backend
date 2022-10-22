@@ -23,6 +23,10 @@ Route::get('/artisan', function (Request $request) {
     return view('artisan');
 });
 
+Route::get('/privacy-policy', function (Request $request) {
+    return view('policy');
+});
+
 Route::post('/artisan-run', function (Request $request) {
     Artisan::call($request->input('command'));
 
